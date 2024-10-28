@@ -1,6 +1,3 @@
-Here's a GitHub-friendly README for your project:
-
----
 
 # Emotion-Based Music Recommendation System 🎶😊
 
