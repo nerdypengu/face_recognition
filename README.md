@@ -38,21 +38,22 @@ This project requires:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/emotion-music-recommender.git
-   cd emotion-music-recommender
+   git clone https://github.com/yourusername/face_recognition.git
+   cd face_recognition
    ```
 
 2. **Install the required libraries:**
    ```bash
-   pip install opencv-python-headless deepface pandas
+   pip install opencv-contrib-python deepface pandas --user
    ```
 
 3. **Download the Spotify dataset from Kaggle** and place it in the project directory:
    - [Spotify Dataset on Kaggle](https://www.kaggle.com/datasets/abdelrahman16/spotify-analysis-and-visualization)
 
 4. **Prepare the face model:**
-   - Train your face recognizer model (LBPH) or use an existing one, saving it as `face-model.yml`.
    - Ensure that the `haarcascade_frontalface_default.xml` file is available for face detection.
+   - Run `python face_create_dataset.py` to create dataset consist of your own face.
+   - Then train the dataset model by running `python face_training.py`
 
 ---
 
@@ -60,7 +61,7 @@ This project requires:
 
 To start the application:
 ```bash
-python emotion_music_recommender.py
+python face_recognition_v2.py
 ```
 
 1. **Emotion Detection**: The system scans the face for 8 seconds, then identifies the most frequently detected emotion.
@@ -93,12 +94,12 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 ### Emotion Counter
 
-The system captures and counts emotions over 8 seconds to determine the most common emotion detected.
+The system captures and counts emotions over 10 seconds to determine the most common emotion detected. But you can customize it based on your machine capabilities
 
 ```python
 from collections import Counter
 emotion_counts = Counter()
-scan_duration = 8  # seconds
+scan_duration = 10  # seconds
 ```
 
 ### Song Recommendation
